@@ -416,13 +416,14 @@ async def send_order(c: CallbackQuery, state: FSMContext, bot: Bot):
 @dp.message(StateFilter(None))
 async def fallback(m: Message):
     await m.answer("Quyidagilardan birini tanlang:", reply_markup=menu_kb())
-# ---------------- Webhook (Render uchun) ----------------
+# # ---------------- Webhook (Render uchun) ----------------
 import os
 from aiohttp import web
 from aiogram.webhook.aiohttp_server import SimpleRequestHandler, setup_application
 
 WEBHOOK_PATH = "/webhook"
-WEBHOOK_URL = "https://dila-shoping-bot-1.onrender.com" + WEBHOOK_PATH
+BASE_URL = os.environ.get("RENDER_EXTERNAL_URL", "https://iymona-s-logo-bot-nkay.onrender.com")
+WEBHOOK_URL = BASE_URL + WEBHOOK_PATH
 
 bot = Bot(BOT_TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
 
