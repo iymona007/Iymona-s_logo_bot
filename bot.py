@@ -29,9 +29,9 @@ CONTACT_IG = "https://www.instagram.com/iyman01114"
 CONTACT_PHONE = "+998 99 610 16 48"
 
 PLANS = {
-    "basic": ("Oddiy", "100 000 so'mdan", ["4 tagacha tugma", "Ism va tavsif", "Rang tanlash", "Tayyor havola"]),
-    "custom": ("Shaxsiy dizayn", "250 000 so'mdan", ["Logotip va brend ranglari", "Stikerlar va bezak", "Hosting va havolani joylash", "1 marta bepul o'zgartirish"]),
-    "premium": ("Premium", "500 000 so'mdan", ["8 va undan ko'p tugma", "Bosilishlar hisobi", "O'z domeningiz", "1 oy qo'llab-quvvatlash"]),
+    "basic": ("Oddiy", "500 000 so'mdan", ["4 tagacha tugma", "Ism va tavsif", "Rang tanlash", "Tayyor havola"]),
+    "custom": ("Shaxsiy dizayn", "800 000 so'mdan", ["Logotip va brend ranglari", "Stikerlar va bezak", "Hosting va havolani joylash", "1 marta bepul o'zgartirish"]),
+    "premium": ("Premium", "100$", ["8 va undan ko'p tugma", "Bosilishlar hisobi", "O'z domeningiz", "1 oy qo'llab-quvvatlash"]),
 }
 
 # Savol-javob: o'zingizga mos qilib o'zgartiring
