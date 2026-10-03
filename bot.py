@@ -416,15 +416,37 @@ async def send_order(c: CallbackQuery, state: FSMContext, bot: Bot):
 @dp.message(StateFilter(None))
 async def fallback(m: Message):
     await m.answer("Quyidagilardan birini tanlang:", reply_markup=menu_kb())
+# ---------------- Webhook (Render uchun) ----------------
+import os
+from aiohttp import web
+from aiogram.webhook.aiohttp_server import SimpleRequestHandler, setup_application
+
+WEBHOOK_PATH = "/webhook"
+WEBHOOK_URL = "https://dila-shoping-bot-1.onrender.com" + WEBHOOK_PATH
+
+bot = Bot(BOT_TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
 
 
-async def main():
-    if BOT_TOKEN.startswith("SHU_YERGA"):
-        raise SystemExit("bot.py ning tepasida BOT_TOKEN ni yozing")
+async def on_startup(bot: Bot):
+    await bot.set_webhook(WEBHOOK_URL, drop_pending_updates=True)
+    logging.info("Webhook o'rnatildi: %s", WEBHOOK_URL)
+
+
+async def health(request):
+    return web.Response(text="ok")
+
+
+def main():
     logging.basicConfig(level=logging.INFO)
-    bot = Bot(BOT_TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
-    await dp.start_polling(bot)
+    dp.startup.register(on_startup)
+
+    app = web.Application()
+    app.router.add_get("/", health)
+    SimpleRequestHandler(dispatcher=dp, bot=bot).register(app, path=WEBHOOK_PATH)
+    setup_application(app, dp, bot=bot)
+
+    web.run_app(app, host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    main()
