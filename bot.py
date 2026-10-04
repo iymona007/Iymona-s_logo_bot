@@ -21,7 +21,7 @@ from aiogram.types import CallbackQuery, KeyboardButton, Message, ReplyKeyboardM
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 
 # ====== SOZLAMALAR: o'zingiznikiga almashtiring ======
-BOT_TOKEN = "8933220717:AAEHLVZJtaweEkaYRq4Dza8Rn5hFAQgIN2Q" 
+BOT_TOKEN = "8933220717:AAEwUtBZ2gwNPPGXx7SBm-sK16Aq7tq-63g"
 ADMIN_ID = 5550228074 
 SAMPLES_URL = "https://iymona-s-logo.onrender.com" 
 CONTACT_TG = "@Iymane011"
